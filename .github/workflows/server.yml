@@ -26,7 +26,7 @@ jobs:
     - name: Start Express Server
       run: |
         cd server
-        npm run start
+        nohup npm start > /dev/null 2>&1 & 
       env:
         REACT_APP_FATSECRET_CLIENT_ID: ${{ secrets.REACT_APP_FATSECRET_CLIENT_ID }}
         REACT_APP_FATSECRET_CLIENT_SECRET: ${{ secrets.REACT_APP_FATSECRET_CLIENT_SECRET }}
