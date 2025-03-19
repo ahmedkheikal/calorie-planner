@@ -1,0 +1,33 @@
+name: Express Server
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  start-server:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
+        
+    - name: Install Dependencies
+      run: |
+        cd server
+        npm install
+        
+    - name: Start Express Server
+      run: |
+        cd server
+        npm run dev
+      env:
+        REACT_APP_FATSECRET_CLIENT_ID: ${{ secrets.REACT_APP_FATSECRET_CLIENT_ID }}
+        REACT_APP_FATSECRET_CLIENT_SECRET: ${{ secrets.REACT_APP_FATSECRET_CLIENT_SECRET }}
+        PORT: 5000 
