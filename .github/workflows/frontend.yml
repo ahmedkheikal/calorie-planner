@@ -30,4 +30,4 @@ jobs:
       if: github.ref == 'refs/heads/main'
       run: npm run deploy
       env:
-        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
+        GH_TOKEN: ${{ secrets.FRONTEND_GITHUB_TOKEN }} 
